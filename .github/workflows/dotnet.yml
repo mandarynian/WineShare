@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  restore&tests:
+  restore_and_tests:
 
     runs-on: ubuntu-latest
 
