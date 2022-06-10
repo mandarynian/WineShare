@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "WineShare - Admin Panel";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+
+<div class="container">
+    <div class="row">
+
+    @{
+        var datas = ViewBag.Message as IEnumerable<WineDocumentation.Infrastructure.DTO.UserDto>;
+       
+        foreach (var item in datas)
+        {
+        
+            <div class="col-sm-5 col-md-5 special-margin-top user-box" data-iddata="@item.Id">
+                <form id="form1" method="post" asp-controller="Users" asp-action="Update" >
+                    <input type="text" id="Id" name="Id" class="form-control" style="display:none" value="@item.Id">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Imię i nazwisko</label>
+                        <input type="text" id="Username" name="Username" class="form-control"  value="@item.Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Adres e-mail</label>
+                        <input type="text" id="Email" name="Email" class="form-control"  value="@item.Email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Hasło</label>
+                        <input type="text" id="Password" name="Password" class="form-control" value="@item.Password">
+                    </div>
+                    <select class="form-select" aria-label="User role" name="Role">
+                        <option selected>@item.Role</option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <input class="btn btn-primary" type="submit" value="Zapisz">
+                </form>
+            </div>
+
+        }
+
+    }
+    </div>
+</div>

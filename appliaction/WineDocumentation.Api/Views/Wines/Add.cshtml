@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "WineShare - Dodaj wino";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="row special-margin-top">
+            <form id="form1" method="post" asp-controller="Wines" asp-action="add" >
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nazwa wina</label>
+                    <input type="text" id="Winename" name="Winename" class="form-control" id="exampleFormControlInput1" placeholder="Jan">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Gatunek</label>
+                    <input type="text" id="Speciename" name="Speciename" class="form-control" id="exampleFormControlInput1" placeholder="Gatunek">
+                </div>
+                <div class="mb-3">
+                    <label for="floatingTextarea2">Opis</label>
+                    <textarea id="Description" name="Description" class="form-control" placeholder="Opis.." id="floatingTextarea2" style="height: 100px"></textarea>
+                </div>
+                 <div class="mb-3">
+                   <label for="exampleFormControlInput1" class="form-label">Brand</label>
+                    <input type="text" id="Brand" name="Brand" class="form-control" id="exampleFormControlInput1" placeholder="Wino Jana">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Dodaj wino">
+            </form>
+        </div>
+    </div>

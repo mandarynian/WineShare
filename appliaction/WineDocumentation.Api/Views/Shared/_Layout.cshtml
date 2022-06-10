@@ -1,0 +1,75 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WineShare</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    
+</head>
+
+
+<body>
+    <header>
+        <nav class="navi-bar">
+            @{
+                var user = (ViewContext.HttpContext.User.Identity as ClaimsIdentity);
+                var claim = user.FindFirst(ClaimTypes.Role);
+                var userRole = claim == null ? null : claim.Value;
+            }
+            <div class="container navi-content-box">
+                <a class="navi-brand navi-link" asp-area="" asp-controller="Home" asp-action="Index">WineShare</a>
+                <a class="navi-link" asp-area="" asp-controller="Wines" asp-action="All">Wszystkie wina</a>
+                <a class="navi-link" asp-area="" asp-controller="Wines" asp-action="Add">Dodaj wino</a>
+                @if (userRole == "Admin")
+                {
+                    <a class="navi-link" asp-area="" asp-controller="Users" asp-action="AdminPanel">Panel administratora</a>
+                }
+            </div>
+            <div class="container navi-content-box usern-navigation">
+                @{
+                    if (user.Name != null)
+                    {
+                        <a class="navi-brand navi-link" asp-area="" asp-controller="Users" asp-action="Logout">LogOut</a>
+                    }
+                    else 
+                    {
+                        <a class="navi-brand navi-link" asp-area="" asp-controller="Users" asp-action="LogIn">LogIn</a>
+                    }
+                }
+                
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer">
+        <div class="container">
+            &copy; 2021 - WineShare
+        </div>
+        <div class="container">
+            Krystian Tokarczyk
+        </div>
+        <div class="container">
+            Projekt na studia semestr 6
+        </div>
+        <div class="container">
+            Wszelkie prawa zastrzeżone
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/app.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

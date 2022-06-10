@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "WineShare - Wine";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+
+    @{
+        var data = ViewBag.Message;
+        float avgScores = 0.0f;
+        int iterSocres = 0;
+                   
+        foreach (var score in data.Scores)
+        {
+            avgScores += score.ScoreValue;
+            iterSocres++;
+        }
+
+        avgScores /= iterSocres;
+
+        var resultScores = float.IsNaN(avgScores) ? "Brak ocen" : $"{avgScores}";
+
+        <div class="col border" data-iddata="@data.Id">
+            <h4 class="wine-name">Nazwa wina: @data.Winename</h4>
+            <ul class="list-group">Gatunek: @data.Species.Sepciesname
+                <li class="list-group-item">@data.Species.Color</li>
+                <li class="list-group-item">@data.Species.Description</li>
+            </ul>
+            <p>Średnia ocen: @resultScores</p>
+            
+        </div>
+    }
+    </div>
+
+    <div class="row special-margin-top add-comment-form">
+        <form id="form1" method="post" asp-controller="Wines" asp-action="Comment" >
+            <input type="text" id="WineId" name="WineId" class="form-control" style="display:none" value="@data.Id" enctype="application/json" accept-charset="utf-8">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Imię</label>
+                <input type="text" id="Author" name="Author" class="form-control" id="exampleFormControlInput1" placeholder="Jan">
+            </div>
+            <div class="form-floating">
+                <textarea id="Comment" name="Comment" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+            </div>
+            <div class="mb-3">
+                <label for="customRange3" class="form-label">Ocena (1 - 5)</label>
+                <input type="range" id="ScoreValue" name="ScoreValue" class="form-range" min="1" max="5" step="1" id="customRange3">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Dodaj komentarz">
+       
+        </form>
+    </div>
+
+  @{
+      foreach (var score in data.Scores)
+      {
+          var proc = @score.ScoreValue*100/5;
+          <figure class="border comment">
+                <blockquote class="blockquote">
+                    <p>@score.Comment</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    <cite title="Source Title">@score.Author</cite>
+                </figcaption>
+                
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: @proc%" aria-valuenow="" aria-valuemin="0" aria-valuemax="5"></div>
+                </div>
+            </figure>
+          
+      }
+  }
+
+</div>

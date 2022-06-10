@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "WineShare -Wyloguj się";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="row special-margin-top">
+            <form id="form1" method="post" asp-controller="Users" asp-action="Logout" >
+                <input class="btn btn-primary" type="submit" value="Wyloguj">
+            </form>
+        </div>
+    </div>

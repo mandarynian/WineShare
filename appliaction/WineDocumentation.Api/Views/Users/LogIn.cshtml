@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "WineShare - Zaloguj się";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="row special-margin-top">
+            <form id="form1" method="post" asp-controller="Users" asp-action="Login" >
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Adres e-mail</label>
+                    <input type="text" id="Email" name="Email" class="form-control" id="exampleFormControlInput1" placeholder="email@example.com">
+                </div>
+                <div class="mb-3">
+                     <label for="exampleFormControlInput1" class="form-label">Hasło</label>
+                    <input type="password" id="Password" name="Password" class="form-control" id="exampleFormControlInput1" placeholder="Hasło">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Zaloguj">
+            </form>
+        </div>
+    </div>

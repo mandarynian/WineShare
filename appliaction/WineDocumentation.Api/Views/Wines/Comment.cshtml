@@ -1,0 +1,45 @@
+@{
+    
+    ViewData["Title"] = "WineShare - All Wines";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+
+    @{
+        var datas = ViewBag.Message;
+        float avgScores = 0.0f;
+        int iterSocres = 0;
+        foreach (var item in datas)
+        {
+            
+            foreach (var score in item.Scores)
+            {
+                avgScores += score.ScoreValue;
+                iterSocres++;
+            }
+
+            avgScores /= iterSocres;
+
+            var resultScores = float.IsNaN(avgScores) ? "Brak ocen" : $"{avgScores}";
+
+        
+            <div class="col-sm-5 col-md-5 border special-margin-top wine-box" data-iddata="@item.Id">
+                <p class="wine-id" style="display:none;">@item.Id</p>
+                <h4 class="wine-name">Nazwa wina: @item.Winename</h4>
+                <p>Gatunek: @item.Species.Sepciesname</p>
+                <p>Opis: @item.Description</p>
+                <p>Średnia ocen: @resultScores</p>
+            </div>
+
+        }
+
+    }
+    </div>
+</div>
+
+
+
+

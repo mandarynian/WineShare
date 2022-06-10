@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="../WineDocumentation.Core/WineDocumentation.Core.csproj" />
+  </ItemGroup>
+  
+ <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.0.0" />
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="1.1.1" />
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" /> -->
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.2" /> -->
+    <!--<PackageReference Include="MongoDb.Driver" Version="2.4.4" />--> 
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.01" />
+    <PackageReference Include="NLog.Extensions.Logging " Version="1.0.0-rtm-beta5 " />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.4.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
+
+  </ItemGroup>
+</Project>
