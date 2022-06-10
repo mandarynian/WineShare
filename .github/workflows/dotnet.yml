@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.0.x
     - name: Restore dependencies
-      run: dotnet restore .\appliaction\WineDocumentation.Tests\
+      run: dotnet restore ./appliaction/WineDocumentation.Tests/
     - name: Build
-      run: dotnet build --no-restore .\appliaction\WineDocumentation.Tests\
+      run: dotnet build --no-restore ./appliaction/WineDocumentation.Tests/
     - name: Test
-      run: dotnet test --no-build --verbosity normal .\appliaction\WineDocumentation.Tests\
+      run: dotnet test --no-build --verbosity normal ./appliaction/WineDocumentation.Tests/
