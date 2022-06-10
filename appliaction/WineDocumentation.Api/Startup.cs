@@ -51,9 +51,6 @@ namespace WineDocumentation.Api
                 .AllowAnyHeader()
             ));
 
-
-
-
             services.AddScoped<IUserRepository, InMemoryUserRepository>();
             services.AddScoped<IWineRepository, InMemoryWineRepository>();
             // services.AddScoped<IUserRepository, UserRepository>();
