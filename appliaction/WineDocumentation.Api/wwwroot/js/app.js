@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('.wine-box').on('click', function (e) {
-        var sUrl = String("http://localhost:5000/Wines/id/" + $(this).data("iddata"));
+        var sUrl = String("http://localhost:5106/Wines/id/" + $(this).data("iddata"));
         $.ajax({
             url: sUrl,
             type: 'GET',
@@ -47,7 +47,7 @@ function sendComment() {
     };
    
     $.ajax({
-        url: "http://localhost:5000/Wines/Comment",
+        url: "http://localhost:5106/Wines/Comment",
         type: 'POST',
         data: JSON.stringify(datas),
         contentType: "application/json; charset=utf-8",
@@ -75,7 +75,7 @@ function addWIne() {
     };
    
     $.ajax({
-        url: "http://localhost:5000/Wines/Add",
+        url: "http://localhost:5106/Wines/Add",
         type: 'POST',
         data: JSON.stringify(datas),
         contentType: "application/json; charset=utf-8",
@@ -96,7 +96,7 @@ function addUser() {
     };
 
     $.ajax({
-        url: "http://localhost:5000/Users/Add",
+        url: "http://localhost:5106/Users/Add",
         type: 'POST',
         data: JSON.stringify(datas),
         contentType: "application/json; charset=utf-8",
@@ -115,13 +115,13 @@ function LogInUser() {
     };
 
     $.ajax({
-        url: "http://localhost:5000/Users/LoggedIn",
+        url: "http://localhost:5106/Users/LoggedIn",
         type: 'POST',
         data: JSON.stringify(datas),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function() {   
-            location.href("http://localhost:5000/");  
+            location.href("http://localhost:5106/");  
         }
     });  
 
