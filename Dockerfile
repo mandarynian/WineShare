@@ -1,12 +1,16 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS base
+# Get Base Image (Full .NET Core SDK)
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build-env
 WORKDIR /app
-COPY . .
 
-RUN dotnet publish "./appliaction/WineDocumentation.Api/WineDocumentation.Api.csproj" -c Release -o /app/publish
+# Copy csproj and restore
+COPY ./appliaction/WineDocumentation.Api/ ./WineDocumentation.Api/
+COPY ./appliaction/WineDocumentation.Infrastructure/ ./WineDocumentation.Infrastructure/
+COPY ./appliaction/WineDocumentation.Core/ ./WineDocumentation.Core/
 
-FROM base AS final
+RUN dotnet publish ./WineDocumentation.Api/WineDocumentation.Api.csproj -c Release -o out
+
+# Generate runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 WORKDIR /app
-COPY --from=publish /app/publish ./
-
-EXPOSE 80
-ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll", "kestral"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll"]

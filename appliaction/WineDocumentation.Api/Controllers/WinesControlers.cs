@@ -107,14 +107,27 @@ namespace WineDocumentation.Api.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> Post([FromBody]CreateWine request)
+        [HttpPost("addwine")]
+        public async Task<IActionResult> Post(CreateWine request)
         {
             await _wineService.CreateAsync(
                 Guid.NewGuid(), 
                 request.Winename, 
                 request.Brand, 
                 new Core.Domain.Species(request.Speciename), 
+                request.Description);
+
+            return RedirectToAction("all", "Wines");
+        }
+        
+        [HttpPost("add")]
+        public async Task<IActionResult> PostAddWine([FromBody]CreateWine request)
+        {
+            await _wineService.CreateAsync(
+                Guid.NewGuid(),
+                request.Winename,
+                request.Brand,
+                new Core.Domain.Species(request.Speciename),
                 request.Description);
 
             return RedirectToAction("all", "Wines");

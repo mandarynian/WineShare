@@ -35,10 +35,10 @@ namespace WineDocumentation.Core.Domain
         
         public void SetUsername(string username) 
         {
-            if(!NameRegex.IsMatch(username))
-            {
-                throw new Exception("Username is invalid.");
-            }
+            //if(!NameRegex.IsMatch(username))
+            //{
+            //    throw new Exception("Username is invalid.");
+            //}
 
             if (String.IsNullOrEmpty(username))
             {
@@ -84,18 +84,18 @@ namespace WineDocumentation.Core.Domain
             {
                 throw new Exception("Password can not be empty.");
             }
-            if (string.IsNullOrWhiteSpace(salt))
-            {
-                throw new Exception("Salt can not be empty.");
-            }
-            if (password.Length < 4) 
-            {
-                throw new Exception("Password must contain at least 4 characters.");
-            }
-            if (password.Length > 100) 
-            {
-                throw new Exception("Password can not contain more than 100 characters.");
-            }
+            //if (string.IsNullOrWhiteSpace(salt))
+            //{
+            //    throw new Exception("Salt can not be empty.");
+            //}
+            //if (password.Length < 4) 
+            //{
+            //    throw new Exception("Password must contain at least 4 characters.");
+            //}
+            //if (password.Length > 100) 
+            //{
+            //    throw new Exception("Password can not contain more than 100 characters.");
+            //}
             if (Password == password)
             {
                 return;
