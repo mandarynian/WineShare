@@ -1,12 +1,10 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS build
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS build-env
 WORKDIR /app
-COPY ./appliaction/ .
+COPY . .
 
-RUN dotnet publish "./WineDocumentation.Api/WineDocumentation.Api.csproj" -c Release -o /app
+RUN dotnet publish "./aplication/WineDocumentation.Api/WineDocumentation.Api.csproj" -c Release -o /app
 
-FROM build
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 WORKDIR /app
-COPY --from=build /app ./
-
-EXPOSE 80
+COPY --from=build-env /app .
 ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll"]
