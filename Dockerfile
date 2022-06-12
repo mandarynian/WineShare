@@ -13,4 +13,8 @@ RUN dotnet publish ./WineDocumentation.Api/WineDocumentation.Api.csproj -c Relea
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 WORKDIR /app
 COPY --from=build-env /app/out .
+<<<<<<< HEAD
+=======
+EXPOSE 80
+>>>>>>> 49a9b7c721986ed12de070bf708d35c1bb5c4a03
 ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll"]

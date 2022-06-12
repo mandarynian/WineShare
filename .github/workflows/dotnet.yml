@@ -23,3 +23,10 @@ jobs:
       run: dotnet build --no-restore ./appliaction/WineDocumentation.Tests/
     - name: Test
       run: dotnet test --no-build --verbosity normal ./appliaction/WineDocumentation.Tests/
+    - name: Deploy as docker image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: ktokarczyk/wineshare
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
