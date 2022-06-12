@@ -9,4 +9,4 @@ WORKDIR /app
 COPY --from=publish /app/publish ./
 
 EXPOSE 80
-ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll", "kestral"]
+ENTRYPOINT ["dotnet", "WineDocumentation.Api.dll"]
