@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Deploy as docker image
 
 on:
   push:
