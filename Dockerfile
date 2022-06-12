@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS build
 WORKDIR /app
-COPY ./appliaction/WineDocumentation.Api/WineDocumentation.Api.csproj .
+COPY ./appliaction/ .
 
-RUN dotnet publish "./appliaction/WineDocumentation.Api/WineDocumentation.Api.csproj" -c Release -o /app
+RUN dotnet publish "./WineDocumentation.Api/WineDocumentation.Api.csproj" -c Release -o /app
 
 FROM build
 WORKDIR /app
