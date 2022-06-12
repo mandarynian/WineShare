@@ -8,15 +8,17 @@ COPY ./appliaction/WineDocumentation.Api/WineDocumentation.Api.csproj ./appliact
 COPY ./appliaction/WineDocumentation.Infrastructure/WineDocumentation.Infrastructure.csproj ./appliaction/WineDocumentation.Infrastructure/
 COPY ./appliaction/WineDocumentation.Core/WineDocumentation.Core.csproj ./appliaction/WineDocumentation.Core/
 
-RUN dotnet restore ./appliaction/WineDocumentation.Api/WineDocumentation.Api.csproj
 COPY . .
 WORKDIR /src/appliaction/WineDocumentation.Core
+RUN dotnet restore
 RUN dotnet build -c Release -o /app
 
 WORKDIR /src/appliaction/WineDocumentation.Infrastructure
+RUN dotnet restore
 RUN dotnet build -c Release -o /app
 
 WORKDIR /src/appliaction/WineDocumentation.Api
+RUN dotnet restore
 RUN dotnet build -c Release -o /app
 
 
